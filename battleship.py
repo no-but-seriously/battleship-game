@@ -20,7 +20,6 @@ def print_map(map):
 
 def place_ships(list_of_lists, x_values):
     """Function that replaces dots in the coordinates field with X - the ship coordinates"""
-    #transformed_list = transform_to_list(list_of_lists)
     for values in x_values:
         row_number = values[0]
         row_position = values[1]
@@ -224,6 +223,8 @@ def select_ship_position_pc():
 
 
 def player_missile_cordinates(map):
+    """This function let's the player choose the coordinates that they want to hit. When a
+    ship is hit, the coordinate is replaced with a O, when it's an empty hit, it's replaced wih an I"""
     while True:
         row = int(input("Write the row coordinate you want to hit: "))
         if row < 0 or row > FIELD:
@@ -244,6 +245,7 @@ def player_missile_cordinates(map):
         map[row][place_in_row] = "I"
 
 def computer_missile_cordinates(map):
+    """Let's the pc hit the user map, similar logic to function above"""
     row = random.randrange(FIELD)
     place_in_row = random.randrange(FIELD)
     place_in_row = random.randrange(FIELD)
@@ -254,6 +256,7 @@ def computer_missile_cordinates(map):
 
 
 def are_ships_alive(map):
+    """Function that checks if there are ship parts left to be hit on a map"""
     for row in map:
         if "x" in row:
             return True
